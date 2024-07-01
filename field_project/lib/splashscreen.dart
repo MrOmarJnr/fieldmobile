@@ -2,8 +2,6 @@ import 'package:field_project/home.dart';
 import 'package:field_project/main.dart';
 import 'package:flutter/material.dart';
 
-
-
 class Splash extends StatefulWidget {
   const Splash({super.key});
 
@@ -20,15 +18,15 @@ class _SplashState extends State<Splash> {
 
   _navigatetohome() async {
     await Future.delayed(Duration(milliseconds: 10000), () {});
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => const MyHomePage(title: 'GFG')));
+    Navigator.pushReplacement(context,
+        MaterialPageRoute(builder: (context) => MyBottomNavigationBar()));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child:Image.asset('assets/splashimg.png'),
+        child: Image.asset('assets/splashimg.png'),
       ),
     );
   }
