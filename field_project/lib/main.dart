@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'splashscreen.dart';
 import 'home.dart';
+import 'searchscreen.dart'; 
 
 void main() {
   runApp(const MyApp());
