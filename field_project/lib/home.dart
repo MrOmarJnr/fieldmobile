@@ -14,12 +14,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: '',),
+      home: MyHomePage(
+        title: '',
+      ),
     );
   }
 }
-
-
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -55,7 +55,9 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.headline4, // Larger text style
+              style: Theme.of(context)
+                  .textTheme
+                  .headlineMedium, // Larger text style
             ),
           ],
         ),
