@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
 import 'package:field_project/profilescreen.dart';
 import 'package:field_project/searchscreen.dart';
+import 'package:flutter/material.dart';
 
 void main() {
   runApp(MyApp());
 }
-
+/*
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -14,14 +14,114 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyBottomNavigationBar(),
+      home: MyHomePage(),
+    );
+  }
+}
+
+*/
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int _counter = 0;
+
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+        backgroundColor: Colors.amber, // Custom background color
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text(
+              'You have pushed the button this many times:',
+            ),
+            Text(
+              '$_counter',
+              style: Theme.of(context).textTheme.headline4, // Larger text style
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+        backgroundColor: Colors.amber, // Custom background color for FAB
+      ),
+    );
+  }
+}
+
+class HomeScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Home Screen'),
+      ),
+      body: Center(
+        child: Text(
+          'This is the Home Screen',
+          style: TextStyle(fontSize: 24),
+        ),
+      ),
+    );
+  }
+}
+
+class SearchScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Search Screen'),
+      ),
+      body: Center(
+        child: Text(
+          'This is the Search Screen',
+          style: TextStyle(fontSize: 24),
+        ),
+      ),
+    );
+  }
+}
+
+class ProfileScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Profile Screen'),
+      ),
+      body: Center(
+        child: Text(
+          'This is the Profile Screen',
+          style: TextStyle(fontSize: 24),
+        ),
+      ),
     );
   }
 }
 
 class MyBottomNavigationBar extends StatefulWidget {
-  const MyBottomNavigationBar({Key? key}) : super(key: key);
-
   @override
   _MyBottomNavigationBarState createState() => _MyBottomNavigationBarState();
 }
@@ -30,9 +130,9 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
   int _selectedIndex = 0;
 
   static const List<Widget> _widgetOptions = <Widget>[
-    MyBottomNavigationBar(),
-    Searchscreen(title: '',),
-    Profilescreen(title: '',),
+    MyHomePage(title: 'Home'),
+    Searchscreen(title: 'Search'),
+    Profilescreen(title: 'Profile'),
   ];
 
   void _onItemTapped(int index) {
@@ -71,20 +171,15 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Home Screen'),
-        backgroundColor: Colors.amber, // Custom background color
+    return MaterialApp(
+      title: 'Bottom Navigation Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
       ),
-      body: Center(
-        child: Text(
-          'This is the Home Screen',
-          style: TextStyle(fontSize: 24),
-        ),
-      ),
+      home: MyBottomNavigationBar(),
     );
   }
 }
