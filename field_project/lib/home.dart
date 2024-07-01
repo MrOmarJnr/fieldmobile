@@ -1,6 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:field_project/profilescreen.dart';
 import 'package:field_project/searchscreen.dart';
-import 'package:flutter/material.dart';
 
 void main() {
   runApp(MyApp());
@@ -30,9 +30,9 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
   int _selectedIndex = 0;
 
   static const List<Widget> _widgetOptions = <Widget>[
-    MyHomePage(title: 'Home'),
-    Searchscreen(title: 'Search',),
-    Profilescreen(title: 'Profile',),
+    MyBottomNavigationBar(),
+    Searchscreen(title: '',),
+    Profilescreen(title: '',),
   ];
 
   void _onItemTapped(int index) {
@@ -71,82 +71,17 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
+class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text('Home Screen'),
         backgroundColor: Colors.amber, // Custom background color
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium, // Larger text style
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-        backgroundColor: Colors.amber, // Custom background color for FAB
-      ),
-    );
-  }
-}
-
-class SearchScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Search Screen'),
-      ),
-      body: Center(
         child: Text(
-          'This is the Search Screen',
-          style: TextStyle(fontSize: 24),
-        ),
-      ),
-    );
-  }
-}
-
-class ProfileScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Profile Screen'),
-      ),
-      body: Center(
-        child: Text(
-          'This is the Profile Screen',
+          'This is the Home Screen',
           style: TextStyle(fontSize: 24),
         ),
       ),
