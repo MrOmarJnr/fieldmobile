@@ -1,8 +1,6 @@
-import 'package:field_project/splashscreen.dart';
 import 'package:flutter/material.dart';
-
-
-
+import 'splashscreen.dart';
+import 'home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,7 +9,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,7 +17,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Splash(),
+      home: const Splash(),
     );
   }
 }

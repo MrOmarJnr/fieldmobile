@@ -1,28 +1,4 @@
-import 'package:field_project/profilescreen.dart';
-import 'package:field_project/searchscreen.dart';
-import 'package:field_project/splashscreen.dart';
 import 'package:flutter/material.dart';
-
-void main() {
-  runApp(MyApp());
-}
-/*
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Bottom Navigation Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(
-        title: '',
-      ),
-    );
-  }
-}
-
-*/
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -47,20 +23,16 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
-        backgroundColor: Colors.amber, // Custom background color
+        backgroundColor: Colors.amber,
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have  the button this many times:',
-            ),
+            const Text('You have pushed the button this many times:'),
             Text(
               '$_counter',
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineMedium, // Larger text style
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
         ),
@@ -69,20 +41,22 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-        backgroundColor: Colors.amber, // Custom background color for FAB
+        backgroundColor: Colors.amber,
       ),
     );
   }
 }
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home Screen'),
+        title: const Text('Home Screen'),
       ),
-      body: Center(
+      body: const Center(
         child: Text(
           'This is the Home Screen',
           style: TextStyle(fontSize: 24),
@@ -93,13 +67,15 @@ class HomeScreen extends StatelessWidget {
 }
 
 class SearchScreen extends StatelessWidget {
+  const SearchScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Search Screen'),
+        title: const Text('Search Screen'),
       ),
-      body: Center(
+      body: const Center(
         child: Text(
           'This is the Search Screen',
           style: TextStyle(fontSize: 24),
@@ -110,13 +86,15 @@ class SearchScreen extends StatelessWidget {
 }
 
 class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profile Screen'),
+        title: const Text('Profile Screen'),
       ),
-      body: Center(
+      body: const Center(
         child: Text(
           'This is the Profile Screen',
           style: TextStyle(fontSize: 24),
@@ -127,6 +105,8 @@ class ProfileScreen extends StatelessWidget {
 }
 
 class MyBottomNavigationBar extends StatefulWidget {
+  const MyBottomNavigationBar({super.key});
+
   @override
   _MyBottomNavigationBarState createState() => _MyBottomNavigationBarState();
 }
@@ -136,8 +116,8 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
 
   static const List<Widget> _widgetOptions = <Widget>[
     MyHomePage(title: 'Home'),
-    Searchscreen(title: 'Search'),
-    Profilescreen(title: 'Profile'),
+    SearchScreen(),
+    ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -172,19 +152,6 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
         selectedItemColor: Colors.blue,
         onTap: _onItemTapped,
       ),
-    );
-  }
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Bottom Navigation Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Splash(),
     );
   }
 }
