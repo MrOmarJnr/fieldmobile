@@ -19,7 +19,7 @@ class _SplashState extends State<Splash> {
   }
 
   _navigatetohome() async {
-    await Future.delayed(Duration(milliseconds: 2000), () {});
+    await Future.delayed(Duration(milliseconds: 10000), () {});
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => MyHomePage(title: 'GFG',)));
   }
@@ -28,12 +28,7 @@ class _SplashState extends State<Splash> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Container(
-          child: Text(
-            'Splash Screen',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          ),
-        ),
+        child:Image.asset('assets/splashimg.png'),
       ),
     );
   }
