@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(MyApp());
 }
-
+/*
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -20,6 +20,10 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+<<<<<<< HEAD
+=======
+*/
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -172,7 +176,7 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
     );
   }
 }
-/*
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -185,4 +189,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-*/
