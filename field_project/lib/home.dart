@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(MyApp());
 }
-/*
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -14,12 +14,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+      home: MyHomePage(title: '',),
     );
   }
 }
 
-*/
+
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -55,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium, // Larger text style
+              style: Theme.of(context).textTheme.headline4, // Larger text style
             ),
           ],
         ),
@@ -170,7 +170,7 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
     );
   }
 }
-
+/*
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -183,3 +183,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+*/
