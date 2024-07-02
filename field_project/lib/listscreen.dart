@@ -59,7 +59,7 @@ class _HomePageState extends State<Searchscreen> {
                                       style: TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold,
-                                          color: Colors.white),
+                                          color: const Color.fromARGB(255, 31, 2, 2)),
                                     ),
                                   ),
                                 ),
