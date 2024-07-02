@@ -85,6 +85,26 @@ class SearchScreen extends StatelessWidget {
   }
 }
 
+
+class ListScreen extends StatelessWidget {
+  const ListScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('List Screen'),
+      ),
+      body: const Center(
+        child: Text(
+          'This is the Search Screen',
+          style: TextStyle(fontSize: 24),
+        ),
+      ),
+    );
+  }
+}
+
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
