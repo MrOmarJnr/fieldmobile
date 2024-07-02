@@ -228,7 +228,7 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
         children: _widgetOptions,
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
+        backgroundColor: const Color.fromARGB(255, 15, 2, 2),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
