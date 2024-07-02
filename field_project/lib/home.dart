@@ -93,25 +93,6 @@ class SearchScreen extends StatelessWidget {
 class ListScreen extends StatelessWidget {
   const ListScreen({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('List Screen'),
-      ),
-      body: const Center(
-        child: Text(
-          'This is the List Screen',
-          style: TextStyle(fontSize: 24),
-        ),
-      ),
-    );
-  }
-}
-
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
-
  @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -197,6 +178,25 @@ class ProfileScreen extends StatelessWidget {
   }
 }
 
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Profile Screen'),
+      ),
+      body: const Center(
+        child: Text(
+          'This is the Profile Screen',
+          style: TextStyle(fontSize: 24),
+        ),
+      ),
+    );
+  }
+}
+
 class MyBottomNavigationBar extends StatefulWidget {
   const MyBottomNavigationBar({super.key});
 
@@ -228,6 +228,7 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
         children: _widgetOptions,
       ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.white,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
