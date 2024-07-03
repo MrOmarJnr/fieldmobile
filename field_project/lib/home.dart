@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:field_project/Api_service.dart';
 import 'package:field_project/user_model.dart';
 import 'package:field_project/search.dart';
+import 'package:field_project/landing.dart';
+
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -91,10 +93,12 @@ class SearchScreen extends StatelessWidget {
 
 
 class ListScreen extends StatelessWidget {
-  const ListScreen({super.key});
+  const ListScreen({Key? key}) : super(key: key);
 
- @override
+  @override
   Widget build(BuildContext context) {
+    FetchUserList _userList = FetchUserList();
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -139,7 +143,7 @@ class ListScreen extends StatelessWidget {
                                       style: TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold,
-                                          color: Colors.white),
+                                          color: const Color.fromARGB(255, 185, 8, 8)),
                                     ),
                                   ),
                                 ),
@@ -166,7 +170,14 @@ class ListScreen extends StatelessWidget {
                                     ])
                               ],
                             ),
-                            // trailing: Text('More Info'),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => LandingScreen(user: data![index]),
+                                ),
+                              );
+                            },
                           ),
                         ),
                       );
@@ -228,7 +239,7 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
         children: _widgetOptions,
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color.fromARGB(255, 15, 2, 2),
+        backgroundColor: Color.fromARGB(255, 215, 10, 10),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
