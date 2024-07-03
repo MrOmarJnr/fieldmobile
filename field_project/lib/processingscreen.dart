@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:field_project/user_model.dart';
+import 'package:field_project/completescreen.dart';
 
 class ProcessingScreen extends StatefulWidget {
   final Userlist user;
@@ -28,6 +29,15 @@ class _ProcessingScreenState extends State<ProcessingScreen> {
 
   void _submitData() {
     // Add logic to send information to the database
+  }
+
+  void _completeTask() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => CompleteScreen(user: widget.user),
+      ),
+    );
   }
 
   @override
@@ -75,6 +85,13 @@ class _ProcessingScreenState extends State<ProcessingScreen> {
               child: ElevatedButton(
                 onPressed: _submitData,
                 child: Text('Submit'),
+              ),
+            ),
+            SizedBox(height: 16),
+            Center(
+              child: ElevatedButton(
+                onPressed: _completeTask,
+                child: Text('Complete'),
               ),
             ),
           ],
