@@ -32,7 +32,7 @@ class _CompleteScreenState extends State<CompleteScreen> {
     // Add logic to update the ticket status to closed and any other necessary actions
     Navigator.pushAndRemoveUntil(
       context,
-      MaterialPageRoute(builder: (context) => ListScreen()),
+      MaterialPageRoute(builder: (context) => MyBottomNavigationBar()),
       (Route<dynamic> route) => false,
     );
   }
