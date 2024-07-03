@@ -34,6 +34,10 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>We need to access your camera to take pictures.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We need to access your location to tag the pictures.</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

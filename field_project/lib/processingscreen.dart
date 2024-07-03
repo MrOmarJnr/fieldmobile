@@ -1,9 +1,9 @@
-// processing_screen.dart
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:field_project/user_model.dart';
 import 'package:field_project/completescreen.dart';
+import 'package:geolocator/geolocator.dart';
 
 class ProcessingScreen extends StatefulWidget {
   final Userlist user;
@@ -17,9 +17,29 @@ class ProcessingScreen extends StatefulWidget {
 class _ProcessingScreenState extends State<ProcessingScreen> {
   List<File> _images = [];
   final ImagePicker _picker = ImagePicker();
+  Position? _currentPosition;
+
+  @override
+  void initState() {
+    super.initState();
+    _getCurrentLocation();
+  }
+
+  Future<void> _getCurrentLocation() async {
+    try {
+      Position position = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.best);
+      setState(() {
+        _currentPosition = position;
+      });
+    } catch (e) {
+      print('Error getting location: $e');
+    }
+  }
 
   Future<void> _pickImage() async {
-    final pickedFile = await _picker.pickImage(source: ImageSource.camera);
+    final pickedFile =
+        await _picker.pickImage(source: ImageSource.camera);
     if (pickedFile != null) {
       setState(() {
         _images.add(File(pickedFile.path));
@@ -81,6 +101,25 @@ class _ProcessingScreenState extends State<ProcessingScreen> {
             SizedBox(height: 16),
             _buildImageGrid(),
             SizedBox(height: 32),
+            if (_currentPosition != null) ...[
+              Text(
+                'Location:',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 8),
+              Container(
+                padding: EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: Text(
+                  'Lat: ${_currentPosition!.latitude}, Long: ${_currentPosition!.longitude}',
+                  style: TextStyle(fontSize: 16),
+                ),
+              ),
+              SizedBox(height: 16),
+            ],
             Center(
               child: ElevatedButton(
                 onPressed: _submitData,
