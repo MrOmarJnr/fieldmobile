@@ -3,7 +3,7 @@ import 'package:field_project/Api_service.dart';
 import 'package:field_project/user_model.dart';
 import 'package:field_project/search.dart';
 import 'package:field_project/landing.dart';
-
+import 'package:carousel_slider/carousel_slider.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -52,9 +52,20 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final FetchUserList _userList = FetchUserList();
+  final List<String> imgList = [
+    'https://via.placeholder.com/600/92c952',
+    'https://via.placeholder.com/600/771796',
+    'https://via.placeholder.com/600/24f355',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -62,10 +73,90 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Home Screen'),
       ),
-      body: const Center(
-        child: Text(
-          'This is the Home Screen',
-          style: TextStyle(fontSize: 24),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ListView(
+          children: [
+            Card(
+              elevation: 4,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Announcements',
+                      style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
+                    ),
+                    SizedBox(height: 16),
+                    CarouselSlider(
+                      options: CarouselOptions(
+                        height: 200,
+                        autoPlay: true,
+                        enlargeCenterPage: true,
+                      ),
+                      items: imgList
+                          .map((item) => Container(
+                                child: Center(
+                                  child: Image.network(item,
+                                      fit: BoxFit.cover, width: 1000),
+                                ),
+                              ))
+                          .toList(),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height: 32),
+            Text(
+              'Pending Tickets',
+              style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black),
+            ),
+            SizedBox(height: 16),
+            FutureBuilder<List<Userlist>>(
+              future: _userList.getuserList(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return Center(child: Text('Error: ${snapshot.error}'));
+                } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                  return Center(child: Text('No pending tickets'));
+                } else {
+                  var data = snapshot.data!;
+                  return ListView.builder(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: data.length,
+                    itemBuilder: (context, index) {
+                      return Card(
+                        child: ListTile(
+                          title: Text('ebe'),
+                          subtitle: Text('things'),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    LandingScreen(user: data[index]),
+                              ),
+                            );
+                          },
+                        ),
+                      );
+                    },
+                  );
+                }
+              },
+            ),
+          ],
         ),
       ),
     );
