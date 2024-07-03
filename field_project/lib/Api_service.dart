@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:field_project/user_model.dart';
+import 'dart:convert';
 
 class FetchUserList {
   var data = [];
@@ -28,5 +29,29 @@ class FetchUserList {
       print('error: $e');
     }
     return results;
+  }
+}
+
+
+class ApiService {
+  static const String _baseUrl = 'https://your-api-url.com';
+
+  static Future<void> updateTicketStatus(int id, String status) async {
+    final url = '$_baseUrl/tickets/$id';
+    final response = await http.put(
+      Uri.parse(url),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{
+        'status': status,
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      print('Ticket status updated successfully.');
+    } else {
+      throw Exception('Failed to update ticket status.');
+    }
   }
 }
